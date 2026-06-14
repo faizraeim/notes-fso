@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-   "start": "node --watch index.js",
-    "server": "json-server -p 3001 db.json",
-    "build:ui": "rm -rf dist && cd ../frontend && npm run build && cp -r dist ../backend",
+   "start": "node index.js",
+    "dev": "node --watch index.js",
+     "server": "json-server -p 3001 db.json",
+     "build:ui": "rm -rf dist && cd ../frontend && npm install && npm run build && cp -r dist ../backend",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
   },
   "dependencies": {

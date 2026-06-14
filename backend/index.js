@@ -1,5 +1,10 @@
 import express from 'express'
 import cors from "cors"
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const app = express()
 app.use(express.static('dist'))
@@ -15,10 +20,6 @@ let notes = [
     important: true,
   },
 ];
-
-app.get('/', (request, response)=>{
-    response.send("<h1>Hello World</h1>")
-})
 
 app.get('/api/notes', (request, response)=>{
     response.send(notes)
@@ -67,10 +68,9 @@ app.post('/api/notes', (request, response)=>{
     
 })
 
-// const app = http.createServer((request, response)=>{
-//     response.writeHead(200, {'Content-Type': 'application/json'})
-//     response.end(JSON.stringify(notes))
-// })
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT)
