@@ -68,7 +68,7 @@ app.post('/api/notes', (request, response)=>{
     
 })
 
-app.get('*', (request, response) => {
+app.use((request, response) => {
   response.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
