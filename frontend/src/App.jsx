@@ -77,8 +77,8 @@ const App = () => {
         ))}
       </ul>
 
-      <form onSubmit={addNote} onChange={handleNoteChange}>
-        <input value={newNote} />
+      <form onSubmit={addNote} >
+        <input value={newNote} onChange={handleNoteChange}/>
         <button type="submit">save</button>
       </form>
       <Footer/>
